@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>SIMULATOR CREDIT</title>
+  <title>SIMULATOR CREDIT </title>
 </head>
 
 <body>
   <h1 style="text-align:center">Simulator de credit</h1>
   <div>
-    <p>Credit in lei sau euro?</p>
+    <p style="font-size:26px">Credit in lei sau euro?</p>
   </div>
   <div>
     <button type="button" id="R" style=background-color:white onclick="i_ron()">RON</button>
@@ -46,30 +46,25 @@
   <script>
     var x = "RON";
     var y = "EURO";
-    const bt = document.getElementById('R');
+    var suma_impr=document.getElementById("suma");
+    var d_imprumut=document.getElementById("dur_imprumut");
+    
 
-let elementClicked = false;
 
-bt.addEventListener('click', function handleClick() {
-  console.log('element clicked');
 
-  if (elementClicked) {
-    console.log('button has already been clicked before');
-  }
-
-  elementClicked = true;
-});
-var suma_impr=document.getElementById("suma");
 suma_impr.addEventListener('change', function () {
-  console.log('autoca');
+  console.log('ok');
 if(x=="RON")
 {
   dobanda_ron();
 }
- else
- {
-
- }
+});
+d_imprumut.addEventListener('change', function () {
+  console.log('ok');
+if(x=="RON")
+{
+  dobanda_ron();
+}
 
   
 });
@@ -157,16 +152,20 @@ function asignu()
   btn2.style.backgroundColor = 'blue';
 }
     function dobanda_ron() {
-      const dobanda=13;
+      const dobanda=15;
       var suma;
       var rata;
       var timp;
+      var cbt=document.getElementById('R');
+      var cbt_1=document.getElementById('E');
       suma = Number(document.getElementById("suma").value);
       timp = Number(document.getElementById("dur_imprumut").value);
+      if(cbt.style.backgroundColor=='blue'&& cbt_1.style.backgroundColor=='white')
+      {
       document.getElementById("result").value = timp;
-      rata = (suma / timp)*15/100+suma/timp;
+      rata = (suma / timp)*dobanda/100+suma/timp;
       document.getElementById("test").value = rata;
-
+    }
     }
   </script>
   <hr>
