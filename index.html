@@ -9,171 +9,287 @@
   <title>SIMULATOR CREDIT </title>
 </head>
 
-<body>
+<body style="background-color:rgb(171, 238, 183)">
   <h1 style="text-align:center">Simulator de credit</h1>
   <div>
-    <p style="font-size:26px">Credit in lei sau euro?</p>
-  </div>
-  <div>
-    <button type="button" id="R" style=background-color:white onclick="i_ron()">RON</button>
-    <button type="button" id="E" style=background-color:white onclick="i_euro()">EURO</button>
-    <button type="button" id="d_fixa" style=background-color:white onclick="dfixa()">DOBANDA FIXA</button>
-    <button type="button" id="d_variabila" style=background-color:white onclick="dvariabila()">DOBANDA VARIABILA</button>
-  </div>
-  <div>
-    <p>Incasezi venituri la BT??</p>
-    <button type="button" id="bt_da" style=background-color:white onclick="btda()">DA</button>
-    <button type="button" id="bt_nu" style=background-color:white onclick="btnu()">NU</button>
-  </div>
-  <div>
-    <p>Asigurare de viata si somaj??</p>
-    <button type="button" id="asig_da" style=background-color:white onclick="asigda()">DA</button>
-    <button type="button" id="asig_nu" style=background-color:white onclick="asignu()">NU</button>
-
+    <label for="suma" style="font-size:20px">Suma imprumutata:</label>
+    <input type="number" id="suma" style="height:25px ;width:120px;font-size:15px" Suma imprumutata> <input type="text"
+      id="valuta" style="height:25px ;width:50px;font-size:15px" disabled>
   </div>
 
   <div>
-    <input type="number" id="suma" Suma imprumutata> <input type="text" id="valuta">
+    <label for="dur_imprumut" style="font-size:20px">Durata imprumut:&nbsp;&nbsp;&nbsp;</label>
+    <input type="number" id="dur_imprumut" style="height:25px ;width:120px;font-size:15px" Durata imprumut><span
+      style="font-size:20px">&nbsp;&nbsp;&nbsp;Ani</span>
+  </div>
+  <div>
+    <p style="font-size:20px">Credit in lei sau euro?</p>
   </div>
 
-  <input type="number" id="dur_imprumut" Durata imprumut>
-  <label for="dur_imprumut">Durata imprumut</label>
+  <div>
+    <button type="button" id="R" style="background-color:white;height:30px ;width:120px;font-size:15px"
+      onclick=i_ron()>RON</button>
+    <button type="button" id="E" style="background-color:white;height:30px ;width:120px;font-size:15px"
+      onclick=i_euro()>EURO</button>
+    <div>
+      <p style="font-size:20px">Dobanda fixa sau variabila?</p>
+    </div>
+    <div>
+      <button type="button" id="d_fixa" style="background-color:white;height:30px ;width:120px;font-size:15px"
+        onclick="dfixa()"> FIXA</button>
+      <button type="button" id="d_variabila" style="background-color:white;height:30px ;width:120px;font-size:15px"
+        onclick="dvariabila()"> VARIABILA</button>
+    </div>
+    <div>
+      <div>
+        <p style="font-size:20px">Incasezi venituri la BT?</p>
+      </div>
+      <div>
+        <button type="button" id="bt_da" style="background-color:white;height:30px ;width:120px;font-size:15px"
+          onclick="btda()">DA</button>
+        <button type="button" id="bt_nu" style="background-color:white;height:30px ;width:120px;font-size:15px"
+          onclick="btnu()">NU</button>
+      </div>
+      <div>
+        <div>
+          <p style="font-size:20px">Asigurare de viata si somaj?</p>
+        </div>
+        <div>
+          <button type="button" id="asig_da" style="background-color:white;height:30px ;width:120px;font-size:15px"
+            onclick="asigda()">DA</button>
+          <button type="button" id="asig_nu" style="background-color:white;height:30px ;width:120px;font-size:15px"
+            onclick="asignu()">NU</button>
+
+        </div>
+        <script>
+          var x = "RON";
+          var y = "EURO";
+          var suma_impr = document.getElementById("suma");
+           var d_imprumut = document.getElementById("dur_imprumut");
+          var suma;
+          var rata;
+          var timp;          
+          let r = document.getElementById('R');
+          let e = document.getElementById('E');
+          let df = document.getElementById('d_fixa');
+          let dv = document.getElementById('d_variabila');
+          let bda = document.getElementById('bt_da');
+          let bnu = document.getElementById('bt_nu');
+          let asigd = document.getElementById('asig_da');
+          let asign = document.getElementById('asig_nu');
 
 
 
-
-
-  <script>
-    var x = "RON";
-    var y = "EURO";
-    var suma_impr=document.getElementById("suma");
-    var d_imprumut=document.getElementById("dur_imprumut");
-    
-
-
-
-suma_impr.addEventListener('change', function () {
-  console.log('ok');
-if(x=="RON")
-{
-  dobanda_ron();
-}
-});
-d_imprumut.addEventListener('change', function () {
-  console.log('ok');
-if(x=="RON")
-{
-  dobanda_ron();
-}
-
+          suma_impr.addEventListener('change', function () {
+           
+           
+              dobanda_ron();
+            
+           });
+dur_imprumut.addEventListener('change',function(){
   
-});
-
-  
-
-
+              dobanda_ron();
+            
+           });
 
 
 
-    function i_ron() {
-     
-      const btn1 = document.getElementById('R');
-      const btn2 = document.getElementById('E');      
-      document.getElementById("valuta").value = x;
-      btn1.style.backgroundColor = 'blue';
-      btn2.style.backgroundColor = 'white';
-      suma = Number(document.getElementById("suma").value);
-      timp = Number(document.getElementById("dur_imprumut").value);
-      if(suma==0||timp==0)
-      {
-        alert("introduceti valoarea imprumutului si a duratei");
-      }
-      
-    }
 
-    function i_euro() {
-      const btn1 = document.getElementById('R');
-      const btn2 = document.getElementById('E');      
-      var suma;
-      var rata;
-      var timp;
-      document.getElementById("valuta").value = y;
-      btn1.style.backgroundColor = 'white';
-      btn2.style.backgroundColor = 'blue';
-      suma = Number(document.getElementById("suma").value);
-      timp = Number(document.getElementById("dur_imprumut").value);
-      if(suma==0||timp==0)
-      {
-        alert("introduceti valoarea imprumutului si a duratei");
-      }
-      
-  }
 
-function dfixa() {
-  const btn1 = document.getElementById('d_fixa');
-  const btn2 = document.getElementById('d_variabila'); 
-  btn1.style.backgroundColor = 'blue';
-  btn2.style.backgroundColor = 'white';
-  dobanda_ron();
- 
-}
-function dvariabila() {
-  const btn1 = document.getElementById('d_fixa');
-  const btn2 = document.getElementById('d_variabila'); 
-  btn1.style.backgroundColor = 'white';
-  btn2.style.backgroundColor = 'blue';
-}
-function btda(){
-  const btn1 = document.getElementById('bt_da');
-  const btn2 = document.getElementById('bt_nu'); 
-  btn1.style.backgroundColor = 'blue';
-  btn2.style.backgroundColor = 'white';
 
-}
-function btnu(){
-  const btn1 = document.getElementById('bt_da');
-  const btn2 = document.getElementById('bt_nu'); 
-  btn1.style.backgroundColor = 'white';
-  btn2.style.backgroundColor = 'blue';
 
-}
-function asigda(){
-  const btn1 = document.getElementById('asig_da');
-  const btn2 = document.getElementById('asig_nu'); 
-  btn1.style.backgroundColor = 'blue';
-  btn2.style.backgroundColor = 'white';
-}
-function asignu()
-{
-  
-  const btn1 = document.getElementById('asig_da');
-  const btn2 = document.getElementById('asig_nu'); 
-  btn1.style.backgroundColor = 'white';
-  btn2.style.backgroundColor = 'blue';
-}
-    function dobanda_ron() {
-      const dobanda=15;
-      var suma;
-      var rata;
-      var timp;
-      var cbt=document.getElementById('R');
-      var cbt_1=document.getElementById('E');
-      suma = Number(document.getElementById("suma").value);
-      timp = Number(document.getElementById("dur_imprumut").value);
-      if(cbt.style.backgroundColor=='blue'&& cbt_1.style.backgroundColor=='white')
-      {
-      document.getElementById("result").value = timp;
-      rata = (suma / timp)*dobanda/100+suma/timp;
-      document.getElementById("test").value = rata;
-    }
-    }
-  </script>
-  <hr>
-  <section>
-    <input type="text" id="result" />
-    <input type="text" id="test" />
-    <input type="text" id="test1" />
-  </section>
+
+
+          function i_ron() {
+
+            const btn1 = document.getElementById('R');
+            const btn2 = document.getElementById('E');            
+            btn1.style.backgroundColor = 'blue';
+            btn2.style.backgroundColor = 'white';
+            suma = Number(document.getElementById("suma").value);
+            timp = Number(document.getElementById("dur_imprumut").value);
+            if ((suma < 1000 || suma > 100000)) {
+              document.getElementById("valuta").value = '';
+              document.getElementById("var_m").value = ' ';
+
+              document.getElementById("test").value = 'introduceti suma';
+              btn1.style.backgroundColor = 'white';
+              alert("Introduceti valoarea imprumutului in RON suma cuprinsa intre 2000 si 100000");
+
+            }
+            else
+            {
+             document.getElementById("valuta").value = x;
+             document.getElementById("var_m").value = x;
+            dobanda_ron();
+            }
+             
+            if (timp < 1 || timp > 6) { 
+              document.getElementById("valuta").value = '';
+              document.getElementById("var_m").value = ' ';           
+              document.getElementById("test").value = 'introduceti timp';
+              btn1.style.backgroundColor = 'white';
+              alert("Introduceti durata imprumut intre 1 si 5 ani");
+            }
+            else 
+            {
+              document.getElementById("valuta").value = x;
+              document.getElementById("var_m").value = x;
+              dobanda_ron();
+            }            
+               
+            
+             
+
+          }
+
+          function i_euro() {
+            const btn1 = document.getElementById('R');
+            const btn2 = document.getElementById('E');           
+            btn1.style.backgroundColor = 'white';
+            btn2.style.backgroundColor = 'blue';
+            suma = Number(document.getElementById("suma").value);
+            timp = Number(document.getElementById("dur_imprumut").value);
+            if (suma < 1000 || suma > 40000) {  
+              document.getElementById("valuta").value = '';
+              document.getElementById("var_m").value = ' ';      
+               document.getElementById("test").value = 'introduceti suma';
+              btn2.style.backgroundColor = 'white';
+              alert("Introduceti valoarea imprumutului in EUR suma cuprinsa intre 1000 si 40000");
+
+            }
+            else
+            {
+              document.getElementById("valuta").value = y;
+               document.getElementById("var_m").value = y;
+               dobanda_ron();
+            }
+            
+              
+              if (timp < 1 || timp > 6) {   
+                document.getElementById("valuta").value = '';
+              document.getElementById("var_m").value = ' ';             
+              document.getElementById("test").value = 'introduceti timp';
+              btn2.style.backgroundColor = 'white';
+              alert("Introduceti durata imprumut intre 1 si 5 ani");
+            }
+            else 
+            {
+              document.getElementById("valuta").value = y;
+              document.getElementById("var_m").value = y;
+               dobanda_ron(); 
+            }            
+               
+          }
+
+          function dfixa() {
+            const btn1 = document.getElementById('d_fixa');
+            const btn2 = document.getElementById('d_variabila');
+            btn1.style.backgroundColor = 'blue';
+            btn2.style.backgroundColor = 'white';
+            dobanda_ron();
+
+          }
+          function dvariabila() {
+            const btn1 = document.getElementById('d_fixa');
+            const btn2 = document.getElementById('d_variabila');
+            btn1.style.backgroundColor = 'white';
+            btn2.style.backgroundColor = 'blue';
+            dobanda_ron();
+          }
+          function btda() {
+            const btn1 = document.getElementById('bt_da');
+            const btn2 = document.getElementById('bt_nu');
+            btn1.style.backgroundColor = 'blue';
+            btn2.style.backgroundColor = 'white';
+            dobanda_ron();
+
+          }
+          function btnu() {
+            const btn1 = document.getElementById('bt_da');
+            const btn2 = document.getElementById('bt_nu');
+            btn1.style.backgroundColor = 'white';
+            btn2.style.backgroundColor = 'blue';
+            dobanda_ron();
+
+
+          }
+          function asigda() {
+            const btn1 = document.getElementById('asig_da');
+            const btn2 = document.getElementById('asig_nu');
+            btn1.style.backgroundColor = 'blue';
+            btn2.style.backgroundColor = 'white';
+            suma = Number(document.getElementById("suma").value);
+            timp = Number(document.getElementById("dur_imprumut").value);          
+            dobanda_ron();        
+          }
+          function asignu() {
+
+            const btn1 = document.getElementById('asig_da');
+            const btn2 = document.getElementById('asig_nu');
+            btn1.style.backgroundColor = 'white';
+            btn2.style.backgroundColor = 'blue';
+            dobanda_ron();
+          }
+          function dobanda_ron() {
+            let dobanda = vdobanda();            
+            suma = Number(document.getElementById("suma").value);
+            timp = Number(document.getElementById("dur_imprumut").value);    
+            
+            rata = (suma / (12 * timp)) * (dobanda / 100) + suma / (12 * timp);
+            if (vdobanda() == 0)
+              document.getElementById("test").value = 'Stand by....';
+            else 
+              document.getElementById("test").value = rata.toFixed(0);
+            
+          }
+          function vdobanda() {
+            const dob_r = 12;
+            const dob_e = 7;
+            if (e.style.backgroundColor == 'white' && r.style.backgroundColor == 'blue' && df.style.backgroundColor == 'blue' && dv.style.backgroundColor == 'white' && bda.style.backgroundColor == 'blue' && bnu.style.backgroundColor == 'white' && asign.style.backgroundColor == 'blue' && asigd.style.backgroundColor == 'white')
+              return dob_r - 3;
+            else if (e.style.backgroundColor == 'white' && r.style.backgroundColor == 'blue' && df.style.backgroundColor == 'blue' && dv.style.backgroundColor == 'white' && bda.style.backgroundColor == 'white' && bnu.style.backgroundColor == 'blue' && asign.style.backgroundColor == 'blue' && asigd.style.backgroundColor == 'white')
+              return dob_r + 2;
+            else if (e.style.backgroundColor == 'white' && r.style.backgroundColor == 'blue' && df.style.backgroundColor == 'white' && dv.style.backgroundColor == 'blue' && bda.style.backgroundColor == 'white' && bnu.style.backgroundColor == 'blue' && asign.style.backgroundColor == 'blue' && asigd.style.backgroundColor == 'white')
+              return dob_r + 4;
+            else if (e.style.backgroundColor == 'white' && r.style.backgroundColor == 'blue' && df.style.backgroundColor == 'white' && dv.style.backgroundColor == 'blue' && bda.style.backgroundColor == 'blue' && bnu.style.backgroundColor == 'white' && asign.style.backgroundColor == 'blue' && asigd.style.backgroundColor == 'white')
+              return dob_r + 2;
+            else if (e.style.backgroundColor == 'blue' && r.style.backgroundColor == 'white' && df.style.backgroundColor == 'blue' && dv.style.backgroundColor == 'white' && bda.style.backgroundColor == 'blue' && bnu.style.backgroundColor == 'white' && asign.style.backgroundColor == 'blue' && asigd.style.backgroundColor == 'white')
+              return dob_e - 2;
+            else if (e.style.backgroundColor == 'blue' && r.style.backgroundColor == 'white' && df.style.backgroundColor == 'blue' && dv.style.backgroundColor == 'white' && bda.style.backgroundColor == 'white' && bnu.style.backgroundColor == 'blue' && asign.style.backgroundColor == 'blue' && asigd.style.backgroundColor == 'white')
+              return dob_e + 3;
+            else if (e.style.backgroundColor == 'blue' && r.style.backgroundColor == 'white' && df.style.backgroundColor == 'white' && dv.style.backgroundColor == 'blue' && bda.style.backgroundColor == 'white' && bnu.style.backgroundColor == 'blue' && asign.style.backgroundColor == 'blue' && asigd.style.backgroundColor == 'white')
+              return dob_r + 4;
+            else if (e.style.backgroundColor == 'blue' && r.style.backgroundColor == 'white' && df.style.backgroundColor == 'white' && dv.style.backgroundColor == 'blue' && bda.style.backgroundColor == 'blue' && bnu.style.backgroundColor == 'white' && asign.style.backgroundColor == 'blue' && asigd.style.backgroundColor == 'white')
+              return dob_r + 2;
+            else if (e.style.backgroundColor == 'white' && r.style.backgroundColor == 'blue' && df.style.backgroundColor == 'blue' && dv.style.backgroundColor == 'white' && bda.style.backgroundColor == 'blue' && bnu.style.backgroundColor == 'white' && asign.style.backgroundColor == 'white' && asigd.style.backgroundColor == 'blue')
+              return dob_r - 2;
+            else if (e.style.backgroundColor == 'white' && r.style.backgroundColor == 'blue' && df.style.backgroundColor == 'blue' && dv.style.backgroundColor == 'white' && bda.style.backgroundColor == 'white' && bnu.style.backgroundColor == 'blue' && asign.style.backgroundColor == 'white' && asigd.style.backgroundColor == 'blue')
+              return dob_r + 2;
+            else if (e.style.backgroundColor == 'white' && r.style.backgroundColor == 'blue' && df.style.backgroundColor == 'white' && dv.style.backgroundColor == 'blue' && bda.style.backgroundColor == 'white' && bnu.style.backgroundColor == 'blue' && asign.style.backgroundColor == 'white' && asigd.style.backgroundColor == 'blue')
+              return dob_r + 3;
+            else if (e.style.backgroundColor == 'white' && r.style.backgroundColor == 'blue' && df.style.backgroundColor == 'white' && dv.style.backgroundColor == 'blue' && bda.style.backgroundColor == 'blue' && bnu.style.backgroundColor == 'white' && asign.style.backgroundColor == 'white' && asigd.style.backgroundColor == 'blue')
+              return dob_r + 1;
+            else if (e.style.backgroundColor == 'blue' && r.style.backgroundColor == 'white' && df.style.backgroundColor == 'blue' && dv.style.backgroundColor == 'white' && bda.style.backgroundColor == 'blue' && bnu.style.backgroundColor == 'white' && asign.style.backgroundColor == 'white' && asigd.style.backgroundColor == 'blue')
+              return dob_e - 2;
+            else if (e.style.backgroundColor == 'blue' && r.style.backgroundColor == 'white' && df.style.backgroundColor == 'blue' && dv.style.backgroundColor == 'white' && bda.style.backgroundColor == 'white' && bnu.style.backgroundColor == 'blue' && asign.style.backgroundColor == 'white' && asigd.style.backgroundColor == 'blue')
+              return dob_e + 2;
+            else if (e.style.backgroundColor == 'blue' && r.style.backgroundColor == 'white' && df.style.backgroundColor == 'white' && dv.style.backgroundColor == 'blue' && bda.style.backgroundColor == 'white' && bnu.style.backgroundColor == 'blue' && asign.style.backgroundColor == 'white' && asigd.style.backgroundColor == 'blue')
+              return dob_r + 3;
+            else if (e.style.backgroundColor == 'blue' && r.style.backgroundColor == 'white' && df.style.backgroundColor == 'white' && dv.style.backgroundColor == 'blue' && bda.style.backgroundColor == 'blue' && bnu.style.backgroundColor == 'white' && asign.style.backgroundColor == 'white' && asigd.style.backgroundColor == 'blue')
+              return dob_r + 1;
+            else
+              return 0;
+
+          }
+
+        </script>
+        <hr>
+        <section>
+          <label for="test" style="font-size:20px">Rata lunara este de:</label>
+          <input type="text" id="test" style="height:25px ;width:120px;font-size:15px" /> <input type="text" id="var_m"
+            style="height:25px ;width:50px;font-size:15px" disabled>
+        </section>
 
 
 
